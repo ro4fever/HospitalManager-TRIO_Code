@@ -15,11 +15,9 @@ import java.util.Optional;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
-    List<Appointment> findAllByPatientId(Integer id);
+
     List<Appointment> findAllByPatientIdAndAppointmentStatus(Integer id, AppointmentStatus appointmentStatus);
     List<Appointment> findAllByDoctorIdAndAppointmentStatus(Integer id, AppointmentStatus appointmentStatus);
-    List<Appointment> findAllByDoctorAndAppointmentStatus(Doctor doctor, AppointmentStatus appointmentStatus);
-    List<Appointment> findAllByDoctorId(Integer id);
     List<Appointment> findAllByPatientIdAndDoctorIsActiveAndAppointmentStatus(Integer id, boolean isActive, AppointmentStatus appointmentStatus);
     List<Appointment> findAllByDoctorIdAndPatientIsActiveAndAppointmentStatus(Integer id, boolean isActive, AppointmentStatus appointmentStatus);
     Optional<Appointment> findByDate(LocalDateTime date);

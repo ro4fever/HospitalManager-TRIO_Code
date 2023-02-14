@@ -24,7 +24,6 @@ public class AppointmentService {
     private final UserRepository userRepository;
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
-    private final SpecialisationsRepository specialisationsRepository;
     private final AppointmentRepository appointmentRepository;
 
     public List<AppointmentDto> findAllByPatientId(Integer id, AppointmentStatus appointmentStatus) {
@@ -151,19 +150,6 @@ public class AppointmentService {
         appointment.setAppointmentStatus(AppointmentStatus.COMPLETED);
 
         appointmentRepository.save(appointment);
-    }
-
-    public List<AppointmentDto> findAllByDoctorAndStatus(String doctorName, AppointmentStatus appointmentStatus) {
-        Doctor doctor = doctorRepository.findByName(doctorName).orElseThrow(
-                () -> new BusinessException(HttpStatus.NOT_FOUND, "Doctor not found")
-        );
-
-        List<Appointment> appointments = appointmentRepository.findAllByDoctorAndAppointmentStatus(doctor, appointmentStatus);
-
-        return appointments.stream()
-                .map(Appointment::toDto)
-                .toList();
-
     }
 
     public List<AppointmentDto> findAllByUserName(String userName, AppointmentStatus appointmentStatus) {

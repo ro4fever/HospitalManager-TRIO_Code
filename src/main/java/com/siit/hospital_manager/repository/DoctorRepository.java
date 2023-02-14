@@ -18,8 +18,6 @@ public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
     List<Doctor> findAllBySpecialisation(Specialisation specialisation);
 
-    Optional<Doctor> findByName(String name);
-
     List<Doctor> findAllBySpecialisationAndIsActive(Specialisation specialisation, boolean isActive);
 
 

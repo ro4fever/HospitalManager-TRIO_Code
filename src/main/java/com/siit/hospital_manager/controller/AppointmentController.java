@@ -34,7 +34,7 @@ public class AppointmentController {
     private final EmailSenderService emailSenderService;
 
     @GetMapping("/findAllByUserName")
-    public String findAllByUserName(Model model, Principal principal, Authentication authentication, AppointmentStatus appointmentStatus) {
+    public String findAllByUserName(Model model, Principal principal, Authentication authentication) {
         if (isPatient(authentication)) {
             List<AppointmentDto> appointmentsList = appointmentService.findAllByPatientUserNameAndActiveDoctorAndAppointmentStatus(principal.getName(), AppointmentStatus.CONFIRMED);
             model.addAttribute("appointments", appointmentsList);
@@ -51,7 +51,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/findAllByPatientId/{Id}")
-    public String findAllByPatientId(Model model, @PathVariable("Id") Integer id, Authentication authentication, AppointmentStatus appointmentStatus) {
+    public String findAllByPatientId(Model model, @PathVariable("Id") Integer id, Authentication authentication) {
         if (isAdmin(authentication)) {
             List<AppointmentDto> appointmentsList = appointmentService.findAllByPatientId(id, AppointmentStatus.CONFIRMED);
             model.addAttribute("appointments", appointmentsList);
@@ -61,7 +61,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/findAllByDoctorId/{Id}")
-    public String findAllByDoctorId(Model model, @PathVariable("Id") Integer id, Authentication authentication, AppointmentStatus appointmentStatus) {
+    public String findAllByDoctorId(Model model, @PathVariable("Id") Integer id, Authentication authentication) {
         if (isAdmin(authentication)) {
             List<AppointmentDto> appointmentsList = appointmentService.findAllByDoctorId(id, AppointmentStatus.CONFIRMED);
             model.addAttribute("appointments", appointmentsList);
@@ -130,12 +130,14 @@ public class AppointmentController {
 
         return "appointment/doctorAppointmentHistory";
     }
+
     @GetMapping("/patientAppointmentHistory")
-    public String findCompletedAppointmentsByPatient(Model model, Principal principal, AppointmentStatus appointmentStatus) {
+    public String findCompletedAppointmentsByPatient(Model model, Principal principal) {
         List<AppointmentDto> appointments = appointmentService.findAllByUserName(principal.getName(), AppointmentStatus.COMPLETED);
         model.addAttribute("appointments", appointments);
         return "appointment/patientAppointmentHistory";
     }
+
     @GetMapping("/history/{id}")
     public String viewAppointmentHistory(Model model, @PathVariable Integer id){
         Appointment appointment = appointmentService.findAppointmentById(id);

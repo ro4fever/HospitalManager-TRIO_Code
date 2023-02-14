@@ -22,10 +22,13 @@ public class User {
     @NotEmpty(message="user name should not be empty")
     @Column(name="user_name", unique=true)
     private String userName;
+
     @NotNull(message="password should not be null")
     @NotEmpty(message="password should not be empty")
     private String password;
+
     private boolean isActive;
+
     @NotNull(message="roles should not be null")
     @NotEmpty(message="roles should not be empty")
     private String roles;
