@@ -12,11 +12,9 @@ import lombok.Data;
 public class CreateDoctorDto {
 
     @NotEmpty(message = "userName should not be empty")
-    @NotNull(message = "userName can not be null")
     private String userName;
 
     @NotEmpty(message = "password should not be empty")
-    @NotNull(message = "password can not be null")
     private String password;
 
     @NotNull(message="Name should not be null")
@@ -26,5 +24,4 @@ public class CreateDoctorDto {
 
     @Schema(description = "This is the specialisation name")
     private Specialisation specialisation;
-
 }

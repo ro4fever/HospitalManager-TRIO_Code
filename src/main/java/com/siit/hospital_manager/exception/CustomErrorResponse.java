@@ -1,6 +1,7 @@
 package com.siit.hospital_manager.exception;
 
 public class CustomErrorResponse {
+
     private String prettyMessage;
 
     private String errorCode;

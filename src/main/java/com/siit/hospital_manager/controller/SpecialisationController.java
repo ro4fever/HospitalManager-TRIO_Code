@@ -1,5 +1,6 @@
 package com.siit.hospital_manager.controller;
 
+
 import com.siit.hospital_manager.model.Specialisation;
 import com.siit.hospital_manager.model.dto.CreateSpecialisationDto;
 import com.siit.hospital_manager.model.dto.SpecialisationDto;
@@ -14,11 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
-
 import static com.siit.hospital_manager.util.AuthUtils.isAdmin;
-
 
 @Controller
 @RequestMapping("/specialisation")
@@ -26,6 +24,7 @@ import static com.siit.hospital_manager.util.AuthUtils.isAdmin;
 public class SpecialisationController {
 
     private final SpecialisationService specialisationService;
+
     private final DoctorService doctorService;
 
     @GetMapping("/viewAll")
@@ -88,5 +87,4 @@ public class SpecialisationController {
     public void deleteSpecialisationById(@PathVariable Integer id){
         specialisationService.deleteSpecialisationById(id);
     }
-
 }

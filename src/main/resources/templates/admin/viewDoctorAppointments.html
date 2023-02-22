@@ -26,6 +26,7 @@
             <th> Patient age</th>
             <th> Patient eMail</th>
             <th> Patient phone number</th>
+            <th> Appointment Status</th>
             <th> Delete</th>
         </tr>
         </thead>
@@ -47,6 +48,7 @@
             <td th:text="${appointment.patient.age}"> Patient age</td>
             <td th:text="${appointment.patient.email}"> Patient eMail</td>
             <td th:text="${appointment.patient.phoneNumber}"> Patient phone number</td>
+            <td th:text="${appointment.appointmentStatus}"> Appointment Status</td>
             <td>
                 <button class="delete-appointment-button btn btn-danger"> Delete appointment</button>
             </td>

@@ -22,11 +22,11 @@
     </thead>
     <tbody>
     <tr>
-        <td th:text="${appointment.id}"></td>
-        <td th:text="${appointment.date}"></td>
-        <td th:text="${appointment.patient.firstName}"></td>
-        <td th:text="${appointment.patient.lastName}"></td>
-        <td th:text="${appointment.patient.age}"></td>
+        <td th:text="${updateAppointment.id}"></td>
+        <td th:text="${updateAppointment.date}"></td>
+        <td th:text="${updateAppointment.patient.firstName}"></td>
+        <td th:text="${updateAppointment.patient.lastName}"></td>
+        <td th:text="${updateAppointment.patient.age}"></td>
     </tr>
     </tbody>
 
@@ -34,18 +34,33 @@
 <div class="table table-striped-columns w-100 align-middle">
     <br/>
     <div>
-        <form th:object="${appointment}" th:action="@{|/appointment/details/${appointment.id}|}" method="post">
+        <form th:object="${appointment}" th:action="@{|/appointment/details/${updateAppointment.id}|}" method="post">
             <div>
                 <label class="form-label" for="note">Note:</label>
                 <input class="form-control input-lg" type="text" id="note" th:field="*{note}"/>
+            </div>
+            <div>
+                <span class="text-danger" th:if="${#fields.hasErrors('note')}" th:errorclass="error"
+                       th:errors="*{note}">
+                </span>
             </div>
             <div>
                 <label class="form-label" for="diagnostic">Diagnostic:</label>
                 <input class="form-control" type="text" id="diagnostic" th:field="*{diagnostic}"/>
             </div>
             <div>
+                <span class="text-danger" th:if="${#fields.hasErrors('diagnostic')}" th:errorclass="error"
+                      th:errors="*{diagnostic}">
+                </span>
+            </div>
+            <div>
                 <label class="form-label" for="treatment">Treatment:</label>
                 <textarea class="form-control input-lg" rows="3" type="text" id="treatment" th:field="*{treatment}"></textarea>
+            </div>
+            <div>
+                <span class="text-danger" th:if="${#fields.hasErrors('treatment')}" th:errorclass="error"
+                      th:errors="*{treatment}">
+                </span>
             </div>
             <div>
                 <input type="reset" value="Reset" class="btn btn-danger"/>

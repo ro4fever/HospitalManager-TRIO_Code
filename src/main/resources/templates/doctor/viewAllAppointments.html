@@ -20,7 +20,7 @@
             <th> Patient age</th>
             <th> Patient phone number</th>
             <th> Appointment Status</th>
-            <th> View Appointment</th>
+            <th> Edit Appointment</th>
             <th> Delete</th>
         </tr>
         </thead>
@@ -39,7 +39,7 @@
             <td>
                 <button class="view-appointment-button btn btn-success"
                         th:onclick="|window.location.href='/appointment/details/${appointment.id}'|">
-                    View
+                    Edit
                 </button>
             </td>
             <td>

@@ -1,5 +1,6 @@
 package com.siit.hospital_manager.model.dto;
 
+
 import com.siit.hospital_manager.model.AppointmentStatus;
 import com.siit.hospital_manager.model.Doctor;
 import com.siit.hospital_manager.model.Patient;
@@ -11,9 +12,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
-
 
 @Setter
 @Getter
@@ -28,6 +27,7 @@ public class CreateAppointmentDto {
     private Patient patient;
 
     private Doctor doctor;
+
     @Enumerated(EnumType.STRING)
     private AppointmentStatus appointmentStatus;
 }

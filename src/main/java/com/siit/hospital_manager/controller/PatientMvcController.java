@@ -15,11 +15,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
-
 import static com.siit.hospital_manager.util.AuthUtils.isAdmin;
-
 
 @Controller
 @RequestMapping("/mvc/patient")
@@ -27,6 +24,7 @@ import static com.siit.hospital_manager.util.AuthUtils.isAdmin;
 public class PatientMvcController {
 
     private final PatientService patientService;
+
     @GetMapping("viewAll")
     public String getAllPatients(Model model, Authentication authentication) {
         if (isAdmin(authentication)) {

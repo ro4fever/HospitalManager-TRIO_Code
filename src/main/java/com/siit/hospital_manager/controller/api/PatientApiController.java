@@ -1,5 +1,6 @@
 package com.siit.hospital_manager.controller.api;
 
+
 import com.siit.hospital_manager.model.dto.CreatePatientDto;
 import com.siit.hospital_manager.model.dto.PatientDto;
 import com.siit.hospital_manager.service.PatientService;
@@ -8,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 

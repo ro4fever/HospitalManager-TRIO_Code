@@ -18,24 +18,36 @@
         <th> First name</th>
         <th> Last name</th>
         <th> Doctor name</th>
-        <th> Notes</th>
-        <th> Diagnostic</th>
-        <th> Treatment</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="appointment : ${appointment}">
-        <td class="appointmentId" th:text="${appointment.id}"> Id</td>
-        <td th:text="${#temporals.format(appointment.date, 'dd-MM-yyyy HH:mm')}"> Date</td>
-        <td th:text="${appointment.patient.firstName}"> Name</td>
-        <td th:text="${appointment.patient.lastName}"> Name</td>
-        <td th:text="${appointment.doctor.name}"> Name</td>
-        <td th:text="${appointment.note}"> Name</td>
-        <td th:text="${appointment.diagnostic}"> Name</td>
-        <td th:text="${appointment.treatment}"> Name</td>
+    <tr>
+        <td th:text="${appointment.id}"></td>
+        <td th:text="${appointment.date}"></td>
+        <td th:text="${appointment.patient.firstName}"></td>
+        <td th:text="${appointment.patient.lastName}"></td>
+        <td th:text="${appointment.doctor.name}"></td>
     </tr>
     </tbody>
 </table>
+
+<p></p>
+
+<div>
+    <div>
+        <label class="form-label" for="note">Note:</label>
+        <textarea class="form-control input-lg" rows="1" type="text" id="note" th:text="${appointment.note}" readonly></textarea>
+    </div>
+    <div>
+        <label class="form-label" for="diagnostic">Diagnostic:</label>
+        <textarea class="form-control input-lg" rows="1" type="text" id="diagnostic" th:text="${appointment.diagnostic}" readonly></textarea>
+    </div>
+    <div>
+        <label class="form-label" for="treatment">Treatment:</label>
+        <textarea class="form-control input-lg" rows="3" type="text" id="treatment" th:text="${appointment.treatment}" readonly></textarea>
+    </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

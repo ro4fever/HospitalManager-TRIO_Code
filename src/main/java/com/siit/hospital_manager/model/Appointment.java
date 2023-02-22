@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -26,16 +25,21 @@ public class Appointment {
     @NotNull(message = "Date should not be null")
     @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
     private LocalDateTime date;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "doctor_id", nullable = false)
     private Doctor doctor;
 
     private AppointmentStatus appointmentStatus;
+
     private String note;
+
     private String diagnostic;
+
     private String treatment;
 
     public AppointmentDto toDto() {
@@ -49,6 +53,9 @@ public class Appointment {
                 .patient(patient)
                 .doctor(doctor)
                 .appointmentStatus(appointmentStatus)
+                .note(note)
+                .diagnostic(diagnostic)
+                .treatment(treatment)
                 .build();
     }
 

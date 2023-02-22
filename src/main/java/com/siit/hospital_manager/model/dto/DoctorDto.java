@@ -4,8 +4,6 @@ package com.siit.hospital_manager.model.dto;;
 import com.siit.hospital_manager.model.Doctor;
 import com.siit.hospital_manager.model.Specialisation;
 import lombok.Builder;
-
-
 import lombok.*;
 
 @Setter
@@ -16,8 +14,11 @@ import lombok.*;
 public class DoctorDto {
 
     private Integer id;
+
     private String name;
+
     private Specialisation specialisation;
+
     private Boolean isActive;
 
     public DoctorDto(Doctor doctor) {

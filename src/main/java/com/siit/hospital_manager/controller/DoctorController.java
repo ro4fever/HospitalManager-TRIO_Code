@@ -15,13 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
-
 import java.util.List;
-
 import static com.siit.hospital_manager.util.AuthUtils.isAdmin;
 import static com.siit.hospital_manager.util.AuthUtils.isPatient;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -29,6 +25,7 @@ import static com.siit.hospital_manager.util.AuthUtils.isPatient;
 public class DoctorController {
 
     private final DoctorService doctorService;
+
     private final SpecialisationService specialisationService;
 
     @GetMapping("/viewAll")

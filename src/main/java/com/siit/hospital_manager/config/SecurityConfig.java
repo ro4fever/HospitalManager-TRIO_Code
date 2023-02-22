@@ -1,4 +1,7 @@
 package com.siit.hospital_manager.config;
+
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,9 +10,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${arrayOfPermitAllPathPatterns}")
+    private String[] permitAllPaths;
+
+    @Value("${arrayOfSecuredPathPatterns}")
+    private String[] securedPaths;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
@@ -20,10 +30,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/public", "/api-docs/**", "/swagger-ui/**", "/actuator/**", "/error/**", "/favicon.ico", "/mvc/patient/create", "/mvc/patient/submitCreatePatientForm").permitAll()
-                .requestMatchers("/dashboard/**", "/dashboard", "/appointment/findAllByUserName", "/mvc/doctor/viewDoctorSpecialisations", "/appointment/{id}", "/mvc/doctor/viewAll", "/mvc/patient/viewAll",
-                        "/specialisation/viewAll", "/mvc/doctor/viewDoctorsBySpecialisationForPatient/{specialisation}", "/specialisation/viewAllForPatient", "/entityExistsError.html",
-                        "/mvc/doctor/viewDoctorsBySpecialisation/**", "/mvc/doctor/viewDoctorProfile/**", "/appointment/create/**", "/appointment/submit/**","/appointment/**").hasAnyRole("PATIENT", "DOCTOR", "ADMIN")
+                .requestMatchers(permitAllPaths).permitAll()
+                .requestMatchers(securedPaths).hasAnyRole("PATIENT", "DOCTOR", "ADMIN")
                 .requestMatchers("/**").hasRole("ADMIN")
                 .and()
                 .logout()

@@ -1,5 +1,6 @@
 package com.siit.hospital_manager.service;
 
+
 import com.siit.hospital_manager.exception.BusinessException;
 import com.siit.hospital_manager.repository.PatientRepository;
 import com.siit.hospital_manager.repository.UserRepository;
@@ -13,8 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-
 import java.util.List;
 
 @Service
@@ -22,9 +21,10 @@ import java.util.List;
 public class PatientService {
 
     private final PatientRepository patientRepository;
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     public List<PatientDto> findAll() {
         return patientRepository.findAll()
